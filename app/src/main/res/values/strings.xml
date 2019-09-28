@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">IngredientReader</string>
+    <string name="pic_of_list">Picture of the list of ingredients</string>
+</resources>
