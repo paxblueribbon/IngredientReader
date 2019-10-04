@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">IngredientReader</string>
     <string name="pic_of_list">Picture of the list of ingredients</string>
+    <string name="submit">Submit</string>
+    <string name="gf_indicator">GF Indicator</string>
+    <string name="vegan_indicator">Vegan Indicator</string>
+    <string name="gf">GF</string>
+    <string name="v">V</string>
 </resources>

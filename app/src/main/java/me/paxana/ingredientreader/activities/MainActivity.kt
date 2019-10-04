@@ -25,6 +25,8 @@ import me.paxana.ingredientreader.utils.FotoapparatState
 import me.paxana.ingredientreader.utils.resultsActivityIntent
 import me.paxana.ingredientreader.utils.setup
 import java.io.File
+import android.content.ContentResolver
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +52,10 @@ class MainActivity : AppCompatActivity() {
 
         fab_camera.setOnClickListener {
             takePhoto()
+        }
+        fab_camera.setOnLongClickListener {
+            takePhotoSampleData()
+            true
         }
     }
 
@@ -124,12 +130,31 @@ class MainActivity : AppCompatActivity() {
         if (hasNoPermissions()) {
             requestPermission()
         } else{
-            Log.d("Taking photo", filename)
+
+            Logger.d("Taking photo %s", filename)
             fotoapparat.takePicture().saveToFile(dest).whenAvailable {
 
                 CropImage.activity(Uri.fromFile(dest))
                     .start(this)
             }
+        }
+    }
+
+    private fun takePhotoSampleData(){
+        if (hasNoPermissions()) {
+            requestPermission()
+        } else {
+            val resourceId = R.drawable.sampledata
+            val resources = applicationContext.resources
+            val uri = Uri.Builder()
+                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                .authority(resources.getResourcePackageName(resourceId))
+                .appendPath(resources.getResourceTypeName(resourceId))
+                .appendPath(resources.getResourceEntryName(resourceId))
+                .build()
+
+//            val uri = Uri.parse("android.resource://me.paxana.ingredientreader/drawable/sampledata.jpg")
+            startActivity(resultsActivityIntent(uri.toString()))
         }
     }
 }

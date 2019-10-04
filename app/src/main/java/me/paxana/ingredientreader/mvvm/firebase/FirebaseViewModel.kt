@@ -8,9 +8,7 @@ import com.google.firebase.ml.vision.text.FirebaseVisionText
 import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.schedulers.Schedulers
 
 class FirebaseViewModel(private val firebaseInteractorImpl: FirebaseInteractorImpl, application: Application): AndroidViewModel(application) {
@@ -32,7 +30,6 @@ class FirebaseViewModel(private val firebaseInteractorImpl: FirebaseInteractorIm
                 override fun onError(e: Throwable) {
                     Logger.e("err: %s", e.message)
                 }
-
             }))
     }
     fun getOnDeviceTextRecognition(uri: Uri){
@@ -47,15 +44,8 @@ class FirebaseViewModel(private val firebaseInteractorImpl: FirebaseInteractorIm
                 override fun onError(e: Throwable) {
                     Logger.e("err: %s", e.message)
                 }
-
             })
-
         )
-
-    }
-
-    protected fun Disposable.autoClear() {
-        subscriptions += this
     }
 
     public override fun onCleared() {

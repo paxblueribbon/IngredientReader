@@ -192,7 +192,9 @@ class ResultsActivity : AppCompatActivity() {
 
         croppedImageIV.setImageURI(fileUri)
 
-        initRecyclerView()
+        if (ingredientsListRV.adapter == null) {
+            initRecyclerView()
+        }
 
         if (firebaseViewModel.visionText.value == null) {
             firebaseViewModel.getCloudTextRecognition(fileUri)

@@ -11,6 +11,9 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.amazonaws.appsync'
 
 android {
+    dataBinding {
+        enabled = true
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "me.paxana.ingredientreader"
