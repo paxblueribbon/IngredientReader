@@ -7,12 +7,13 @@ import com.amazonaws.mobile.config.AWSConfiguration
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.GenericHandler
 import com.orhanobut.logger.Logger
-import com.pixplicity.easyprefs.library.Prefs
 import kotlinx.android.synthetic.main.activity_profile.*
 import java.lang.Exception
 import android.content.Intent
+import com.pixplicity.easyprefs.library.Prefs
 import me.paxana.ingredientreader.BaseActivity
 import me.paxana.ingredientreader.R
+import me.paxana.ingredientreader.utils.instantiate
 
 
 class ProfileActivity : BaseActivity() {
@@ -31,11 +32,11 @@ class ProfileActivity : BaseActivity() {
                 if (new_PW.editText!!.text.length >= 6){
                     cognitoUserPool.currentUser.changePasswordInBackground(old_PW.editText!!.text.toString(), new_PW_confirm.editText!!.text.toString(), object : GenericHandler{
                         override fun onSuccess() {
-                            Toast.makeText(applicationContext, "OMG U DID IT", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Password Successfully Changed", Toast.LENGTH_SHORT).show()
                         }
 
                         override fun onFailure(exception: Exception?) {
-                            //TODO HANDLE SPECIFIC EXCEPTIONS IN MORE USER FRIENDLY WAYS
+                            //TODO: [add_profile_activity] HANDLE SPECIFIC EXCEPTIONS IN MORE USER FRIENDLY WAYS
                             Toast.makeText(applicationContext, "Error: ${exception?.localizedMessage}", Toast.LENGTH_LONG).show()
                             Logger.e("Err: %s", exception?.localizedMessage)
                         }
@@ -44,6 +45,9 @@ class ProfileActivity : BaseActivity() {
                 else {
                     Toast.makeText(applicationContext, "New Password Must Be More Than 6 Characters", Toast.LENGTH_SHORT).show()
                 }
+            }
+            else {
+                Toast.makeText(applicationContext, "New Password Fields Do Not Match", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -54,22 +58,10 @@ class ProfileActivity : BaseActivity() {
             sendBroadcast(broadcastIntent)
         }
 
-        //TODO: INSTANTIATE TOGGLES WITH ONE LINE
+        //TODO: [add_profile_activity] MAKE INSTANTIATIONS WORK WITH STRING RESOURCES RATHER THAN STRING LITERALS
 
-        debug_toggle.isChecked = Prefs.getBoolean(getString(R.string.SP_debug_key), false)
-        sugar_toggle.isChecked = Prefs.getBoolean(getString(R.string.SP_sugar_vegan_key), true)
-        palm_toggle.isChecked = Prefs.getBoolean(getString(R.string.SP_palm_vegan_key), true)
-
-        debug_toggle.setOnCheckedChangeListener { _, isChecked ->
-            Prefs.putBoolean(getString(R.string.SP_debug_key), isChecked)
-        }
-        sugar_toggle.setOnCheckedChangeListener { _, isChecked ->
-            Prefs.putBoolean(getString(R.string.SP_sugar_vegan_key), isChecked)
-        }
-        palm_toggle.setOnCheckedChangeListener { _, isChecked ->
-            Prefs.putBoolean(getString(R.string.SP_palm_vegan_key), isChecked)
-        }
-
-
+        debug_toggle.instantiate("DEBUG_KEY", false)
+        sugar_toggle.instantiate("SUGAR_VEGAN_KEY", true)
+        palm_toggle.instantiate("PALM_VEGAN_KEY", true)
     }
 }
