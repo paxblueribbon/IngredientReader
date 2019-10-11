@@ -1,6 +1,7 @@
 package me.paxana.ingredientreader.utils
 
 import android.content.Context
+import com.amazonaws.mobile.client.AWSMobileClient
 import com.amazonaws.mobile.config.AWSConfiguration
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
 import com.amazonaws.mobileconnectors.appsync.sigv4.BasicCognitoUserPoolsAuthProvider

@@ -6,4 +6,6 @@
     <string name="vegan_indicator">Vegan Indicator</string>
     <string name="gf">GF</string>
     <string name="v">V</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="profile">Profile</string>
 </resources>

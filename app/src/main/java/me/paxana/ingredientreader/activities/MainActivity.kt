@@ -20,13 +20,12 @@ import io.fotoapparat.selector.back
 import io.fotoapparat.view.CameraView
 import kotlinx.android.synthetic.main.activity_main.*
 import me.paxana.ingredientreader.*
-import me.paxana.ingredientreader.utils.ClientFactory
-import me.paxana.ingredientreader.utils.FotoapparatState
-import me.paxana.ingredientreader.utils.resultsActivityIntent
-import me.paxana.ingredientreader.utils.setup
 import java.io.File
 import android.content.ContentResolver
-import android.view.View
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import me.paxana.ingredientreader.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +49,10 @@ class MainActivity : AppCompatActivity() {
             createFotoapparat()
         }
 
+        fab_flash.setOnClickListener{
+            startActivity(profileActivityIntent())
+        }
+
         fab_camera.setOnClickListener {
             takePhoto()
         }
@@ -57,6 +60,24 @@ class MainActivity : AppCompatActivity() {
             takePhotoSampleData()
             true
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.app_overflow_mentu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.profileID -> {
+                Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun createFotoapparat(){
