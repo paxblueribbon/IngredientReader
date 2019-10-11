@@ -18,6 +18,7 @@ import com.google.firebase.ml.vision.text.FirebaseVisionText
 import com.orhanobut.logger.Logger
 import io.reactivex.observers.DisposableObserver
 import kotlinx.android.synthetic.main.activity_results.*
+import me.paxana.ingredientreader.BaseActivity
 import me.paxana.ingredientreader.R
 import me.paxana.ingredientreader.adapters.IngredientRecyclerAdapter
 import me.paxana.ingredientreader.adapters.IngredientRecyclerClickAdapter
@@ -33,7 +34,7 @@ import org.apache.commons.collections4.map.ListOrderedMap
 import type.GlutenFree
 import type.Vegan
 
-class ResultsActivity : AppCompatActivity() {
+class ResultsActivity : BaseActivity() {
 
     private val ingredientRecyclerAdapter =
         IngredientRecyclerAdapter(object: IngredientRecyclerClickAdapter{

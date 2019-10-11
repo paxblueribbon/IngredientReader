@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -24,10 +23,9 @@ import java.io.File
 import android.content.ContentResolver
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import me.paxana.ingredientreader.utils.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
     private lateinit var fotoapparat: Fotoapparat
@@ -70,7 +68,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.profileID -> {
-                Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
                 return true

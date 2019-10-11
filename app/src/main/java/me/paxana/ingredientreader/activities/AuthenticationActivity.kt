@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.amazonaws.mobile.client.*
+import me.paxana.ingredientreader.BaseActivity
 import me.paxana.ingredientreader.R
 import java.lang.Exception
 
-class AuthenticationActivity : AppCompatActivity() {
+class AuthenticationActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +37,8 @@ class AuthenticationActivity : AppCompatActivity() {
         })
     }
 
-
-
     private fun showSignIn(){
+        //TODO: [DESIGN] CUSTOM BACKGROUND ON LOGIN SCREEN
         try{
             AWSMobileClient.getInstance().showSignIn(this, SignInUIOptions.builder().nextActivity(
                 MainActivity::class.java).build())

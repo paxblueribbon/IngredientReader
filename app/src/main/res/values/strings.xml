@@ -8,4 +8,17 @@
     <string name="v">V</string>
     <string name="ingredient">Ingredient</string>
     <string name="profile">Profile</string>
+    <string name="new_password">New Password</string>
+    <string name="new_pw_confirm">Confirm New Password</string>
+    <string name="old_pw">Old Password</string>
+    <string name="submit_changes">Submit Changes</string>
+    <string name="debugging_toggle">Submit Debugging Info</string>
+    <string name="sugar_vegan_toggle">Treat Sugar As Vegan</string>
+    <string name="palm_vegan_toggle">Treat Palm Oil As Vegan</string>
+    <string name="logout">Log Out</string>
+    <string name="SP_debug_key">Log Out</string>
+    <string name="SP_sugar_vegan_key">Log Out</string>
+    <string name="SP_palm_vegan_key">Log Out</string>
+    <string name="profile_greeting">Hello, %1$s!</string>
+
 </resources>

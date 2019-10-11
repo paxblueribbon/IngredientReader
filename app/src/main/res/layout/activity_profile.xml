@@ -5,50 +5,61 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".activities.ProfileActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:clickable="true"
-        android:text="TextView"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hello (Username)" />
 
     <LinearLayout
         android:id="@+id/linlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/logout"
-        android:layout_alignTop="@+id/textView"
+        android:layout_below="@+id/textView"
         android:layout_marginTop="0dp"
-        android:layout_marginBottom="506dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/old_PW"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="6dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:hint="Old Password"
-                android:inputType="textPassword"
-                android:padding="12dp" />
+                android:hint="@string/old_pw"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordTextInputLayout"
+            android:id="@+id/new_PW"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="6dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/new_password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/new_PW_confirm"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/old_PW">
@@ -56,21 +67,20 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:hint="New Password"
-                android:inputType="textPassword"
-                android:padding="12dp" />
+                android:hint="@string/new_pw_confirm"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="6dp"
-            android:text="Submit Changes" />
+            android:text="@string/submit_changes"
+            android:visibility="visible" />
 
     </LinearLayout>
 
@@ -79,28 +89,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/logout"
-        android:layout_marginBottom="20dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <Switch
             android:id="@+id/debug_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit Debugging Info" />
+            android:text="@string/debugging_toggle" />
 
         <Switch
             android:id="@+id/sugar_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Treat Sugar As Vegan" />
+            android:text="@string/sugar_vegan_toggle" />
 
         <Switch
             android:id="@+id/palm_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Treat Palm Oil As Vegan" />
+            android:text="@string/palm_vegan_toggle" />
     </LinearLayout>
 
     <Button
@@ -109,6 +121,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
-        android:text="Log Out" />
+        android:text="@string/logout" />
 
 </RelativeLayout>
