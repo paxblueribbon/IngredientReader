@@ -85,7 +85,7 @@
         android:orientation="vertical">
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/debug_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit Debugging Info" />
@@ -97,7 +97,7 @@
             android:text="Treat Sugar As Vegan" />
 
         <Switch
-            android:id="@+id/sugar_toggle2"
+            android:id="@+id/palm_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Treat Palm Oil As Vegan" />
